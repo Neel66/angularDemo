@@ -1,0 +1,59 @@
+<div class="m-5">
+    <div class="mb-2 d-flex justify-content-between">
+        <h3>Doctors</h3>
+        <button mat-raised-button color="primary" (click)="createDoctor()">Create</button>
+    </div>
+    <table mat-table [dataSource]="doctors" class="mat-elevation-z8">
+        <div matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef> First Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </div>
+      
+        <div matColumnDef="middleName">
+          <th mat-header-cell *matHeaderCellDef> Middle Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.middleName}} </td>
+        </div>
+      
+        <div matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </div>
+      
+        <div matColumnDef="address1">
+          <th mat-header-cell *matHeaderCellDef> Address 1 </th>
+          <td mat-cell *matCellDef="let element"> {{element.address1}} </td>
+        </div>
+      
+        <div matColumnDef="address2">
+          <th mat-header-cell *matHeaderCellDef> Address 2 </th>
+          <td mat-cell *matCellDef="let element"> {{element.address2}} </td>
+        </div>
+      
+        <div matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef> City </th>
+          <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+        </div>
+      
+        <div matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef> State </th>
+          <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+        </div>
+      
+        <div matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef> Country </th>
+          <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+        </div>
+      
+        <div matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button (click)="editRow(element)" color="warn">Edit</button>
+          </td>
+        </div>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+
+  

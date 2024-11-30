@@ -1,0 +1,18 @@
+<div>
+    <h5 class="m-3">Create Doctor</h5>
+    <app-address [editData]="editDoctorData"></app-address>
+     <div class="d-flex justify-content-between m-2">
+        <div></div>
+        <div *ngIf="error"  class="text-danger">
+            {{error}}
+        </div>
+        <div>
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">
+          Submit
+        </button>&nbsp;
+        <button mat-raised-button color="warn" type="button" (click)="closeModel()">
+            Close
+          </button>
+        </div>
+      </div>
+</div>
