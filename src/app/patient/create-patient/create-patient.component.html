@@ -1,6 +1,6 @@
 <div>
     <h5 class="m-3">Create Patient</h5>
-    <app-address [editData]="editPatientData"></app-address>
+    <app-address [editData]="editPatientData" [role]="userRole"></app-address>
      <div class="d-flex justify-content-between m-2">
         <div></div>
         <div *ngIf="error"  class="text-danger">

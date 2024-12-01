@@ -1,7 +1,7 @@
 <div class="container mt-4">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <!-- Row 1: Name Fields -->
-      <div class="row">
+      <!-- Row 1: Name Fields for patients-->
+      <div class="row" *ngIf="role == 'patient'">
         <div class="col-md-4 mb-3">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>First Name</mat-label>
@@ -39,6 +39,46 @@
             />
             <mat-error *ngIf="form.get('lastName')?.hasError('required')">
               Last Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+           
+      <!-- Row 1: Name Fields for doctor-->
+      <div class="row" *ngIf="role == 'doctor'">
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              formControlName="name"
+              required
+              [ngClass]="{
+                'is-invalid': form.get('name')?.invalid && form.get('name')?.touched
+              }"
+            />
+            <mat-error *ngIf="form.get('name')?.hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Registration Number</mat-label>
+            <input
+              matInput
+              formControlName="registrationNumber"
+              required
+              [ngClass]="{
+                'is-invalid': form.get('registrationNumber')?.invalid && form.get('registrationNumber')?.touched
+              }"
+            />
+            <mat-error *ngIf="form.get('registrationNumber')?.hasError('required')">
+              Registration number is required
+            </mat-error>
+            <mat-error *ngIf="form.get('registrationNumber')?.hasError('pattern') && form.get('registrationNumber')?.touched">
+              Registration Number must contain only numbers.
             </mat-error>
           </mat-form-field>
         </div>

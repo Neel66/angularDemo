@@ -2,6 +2,7 @@ import { Component, Inject, ViewChild  } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import {AddressComponent} from 'src/app/common/address/address.component';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ROLE } from 'src/app/constants/constant';
 @Component({
   selector: 'app-create-doctor',
   templateUrl: './create-doctor.component.html',
@@ -11,6 +12,7 @@ export class CreateDoctorComponent {
   @ViewChild(AddressComponent) addressComponent!: AddressComponent;
   error = '';
   editDoctorData = {};
+  role = ROLE.doctor;
   
   constructor(public dialogRef: MatDialogRef<CreateDoctorComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     if(data){

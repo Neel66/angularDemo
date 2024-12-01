@@ -10,9 +10,8 @@ import {CreateDoctorComponent} from './create-doctor/create-doctor.component';
 })
 export class DoctorComponent {
   displayedColumns: string[] = [
-    'firstName',
-    'middleName',
-    'lastName',
+    'name',
+    'registrationNumber',
     'address1',
     'address2',
     'city',
