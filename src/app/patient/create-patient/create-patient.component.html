@@ -1,7 +1,52 @@
-<div>
-    <h5 class="m-3">Create Patient</h5>
-    <app-address [editData]="editPatientData" [role]="userRole"></app-address>
-     <div class="d-flex justify-content-between m-2">
+<div class="m-3">
+    <h5 class="mb-2">Create Patient</h5>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Row 1: Name Fields for patients-->
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            formControlName="firstName"
+            required
+            [ngClass]="{
+              'is-invalid': form.get('firstName')?.invalid && form.get('firstName')?.touched
+            }"
+          />
+          <mat-error *ngIf="form.get('firstName')?.hasError('required')">
+            First Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Middle Name</mat-label>
+          <input matInput formControlName="middleName" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            formControlName="lastName"
+            required
+            [ngClass]="{
+              'is-invalid': form.get('lastName')?.invalid && form.get('lastName')?.touched
+            }"
+          />
+          <mat-error *ngIf="form.get('lastName')?.hasError('required')">
+            Last Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    </form>
+    <app-address [parentForm]="form" [editData]="editPatientData"></app-address>
+     <div class="d-flex justify-content-between">
         <div></div>
         <div *ngIf="error"  class="text-danger">
             {{error}}

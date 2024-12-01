@@ -1,13 +1,53 @@
-<div>
-    <h5 class="m-3">Create Doctor</h5>
-    <app-address [editData]="editDoctorData" [role]="role"></app-address>
-     <div class="d-flex justify-content-between m-2">
+<div class="m-3">
+    <h5 class="mb-2">Create Doctor</h5>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Row 1: Name Fields for doctor-->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            formControlName="name"
+            required
+            [ngClass]="{
+              'is-invalid': form.get('name')?.invalid && form.get('name')?.touched
+            }"
+          />
+          <mat-error *ngIf="form.get('name')?.hasError('required')">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Registration Number</mat-label>
+          <input
+            matInput
+            formControlName="registrationNumber"
+            required
+            [ngClass]="{
+              'is-invalid': form.get('registrationNumber')?.invalid && form.get('registrationNumber')?.touched
+            }"
+          />
+          <mat-error *ngIf="form.get('registrationNumber')?.hasError('required')">
+            Registration number is required
+          </mat-error>
+          <mat-error *ngIf="form.get('registrationNumber')?.hasError('pattern') && form.get('registrationNumber')?.touched">
+            Registration Number must contain only numbers.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <app-address [parentForm]="form" [editData]="editDoctorData"></app-address>
+     <div class="d-flex justify-content-between">
         <div></div>
         <div *ngIf="error"  class="text-danger">
             {{error}}
         </div>
         <div>
-        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">
+        <button mat-raised-button color="primary" type="submit">
           Submit
         </button>&nbsp;
         <button mat-raised-button color="warn" type="button" (click)="closeModel()">
@@ -15,4 +55,5 @@
           </button>
         </div>
       </div>
+    </form>
 </div>
